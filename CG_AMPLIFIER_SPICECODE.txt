@@ -1,0 +1,31 @@
+dc analysis
+.include C:\Electric\c5_models.txt
+vdd vdd 0 DC 5
+vss vss 0 DC 0
+vb vb 0 DC 1.6
+vin vin 0 sin(.38 0.05 1k 0 0 0 50)
+.dc vb 0 5 0.01
+.END
+
+
+Transient analysis
+.include C:\Electric\c5_models.txt
+vdd vdd 0 DC 5
+vss vss 0 DC 0
+vb vb 0 DC 1.6
+vin vin 0 sin(.38 0.05 1k 0 0 0 50)
+.tran 0 5m
+.END
+
+
+ac analysis
+.include C:\Electric\c5_models.txt
+vdd vdd 0 DC 5
+vss vss 0 DC 0
+vb vb 0 DC 1.6
+vin vin 0 ac sin(.38 0.05 1k 0 0 0 50)
+.ac dec 100 100 10G
+.END
+
+
+

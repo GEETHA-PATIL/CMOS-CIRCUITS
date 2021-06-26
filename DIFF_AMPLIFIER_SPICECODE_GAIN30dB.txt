@@ -1,0 +1,36 @@
+gain == 30db    (W/L)1,2=(18/1)
+GBP == 5MHz	(W/L)3,4=(4/2)
+		(W/L)5,6=(6/2)
+Dc analysis
+
+.include C:\Electric\c5_models.txt
+vdd vdd 0 DC 5
+vss vss 0 DC 0
+vin- vin- 0 pulse(0 5 0 0.1n 0.1n 10n 20n)
+vin+ vin+ 0 pulse(5 0 0 0.1n 0.1n 10n 20n)
+.dc vin- 0 5 1m
+.END
+
+tran analysis
+
+.include C:\Electric\c5_models.txt
+vdd vdd 0 DC 5
+vss vss 0 DC 0
+vin- vin- 0 sin(3 0.01 1k 0 0 0 0)
+vin+ vin+ 0 sin(3 0.01 1k 0 0 180 0)
+.trans 0 5m
+.END
+
+
+ac analysis
+
+.include C:\Electric\c5_models.txt
+vdd vdd 0 DC 5
+vss vss 0 DC 0
+vin- vin- 0 ac sin(3.4 50m 1k 0 0 0 0)
+vin+ vin+ 0 ac sin(3.4 50m 1k 0 0 180 0)
+.ac dec 100 100 100G
+.END
+
+
+

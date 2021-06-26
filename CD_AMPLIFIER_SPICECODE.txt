@@ -1,0 +1,35 @@
+ID = .1 mA
+
+dc analysis
+.include C:\Electric\c5_models.txt
+vdd vdd 0 DC 5
+vss vss 0 DC 0
+vb vb 0 DC .8
+vin vin 0 DC 5
+.dc vin 0 5 0.01
+
+
+transient analysis
+.include C:\Electric\c5_models.txt
+vdd vdd 0 DC 5
+vss vss 0 DC 0
+vb vb 0 DC .8
+vin vin 0 sin(4 0.5 1k 0 0 0)
+.tran 0 5m
+
+
+ac analysis
+.include C:\Electric\c5_models.txt
+vdd vdd 0 DC 5
+vss vss 0 DC 0
+vb vb 0 DC .8
+vin vin 0 ac sin(4 0.5 1k 0 0 0)
+.ac dec 100 100 10g
+
+
+
+OUTPUT ANALYSIS:
+Vin = 1 V
+Vout= .834 V
+GAIN OF CD AMPLIFIER Av=(Vout/Vin)= .83 -----> -1.61dB   AC analysis ---> -1.59 dB
+BANDWIDTH = 208.175 MHz

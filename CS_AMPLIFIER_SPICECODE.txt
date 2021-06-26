@@ -1,0 +1,26 @@
+gain == 11
+(W/L)1 = 5/1=15/3
+(W/L)2 = 10/121
+
+dc analysis
+.include C:\Electric\c5_models.txt
+vdd vdd 0 DC 5
+vss vss 0 DC 0
+vin vin 0 DC 5
+.dc vin 0 5 0.1
+
+
+trans analysis
+.include C:\Electric\c5_models.txt
+vdd vdd 0 DC 5
+vss vss 0 DC 0
+vin vin 0 sin(.925 0.005 1k 0 0 0 50)
+.tran 0 5m
+
+
+ac analysis
+.include C:\Electric\c5_models.txt
+vdd vdd 0 DC 5
+vss vss 0 DC 0
+vin vin 0 ac sin(.925 0.005 1k 0 0 0 50)
+.ac dec 100 100 10G
